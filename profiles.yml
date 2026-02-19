@@ -1,0 +1,11 @@
+ecommerce_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ target.account }}"
+      user: "{{ target.user }}"
+      database: CORTEX_CODE_DEMO
+      warehouse: COMPUTE_WH
+      schema: DBT_OUTPUT
+      threads: 4

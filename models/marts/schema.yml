@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Customer dimension with derived attributes
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: Product dimension with price tiers
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_orders
+    description: Fact table with order-level metrics
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+
+  - name: daily_revenue
+    description: Daily aggregated revenue metrics
+    columns:
+      - name: revenue_date
+        tests:
+          - unique
+          - not_null
+
+  - name: customer_lifetime_value
+    description: Customer LTV metrics
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
