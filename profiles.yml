@@ -6,4 +6,5 @@ ecommerce_dbt:
       database: CORTEX_CODE_DEMO
       warehouse: COMPUTE_WH
       schema: DBT_OUTPUT
+      role: ACCOUNTADMIN
       threads: 4
